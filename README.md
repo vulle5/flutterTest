@@ -1,7 +1,7 @@
 # test_project
 
 A new Flutter test project made with Stephen Grider's Udemy course.
-Link:(https://www.udemy.com/dart-and-flutter-the-complete-developers-guide/learn/v4/content)
+Link:(https://www.udemy.com/dart-and-flutter-the-complete-developers-guide/)
 
 ## Getting Started
 
