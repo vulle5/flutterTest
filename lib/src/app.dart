@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-// We only import HttpClient from dart:io
 import 'dart:convert';
+import 'package:http/http.dart' show get;
+
 import 'models/image_model.dart';
 import 'widgets/image_list.dart';
 // http package must be included in pubspec.yaml
 // We only import 'get' package from http.dart
-import 'package:http/http.dart' show get;
 
 class App extends StatefulWidget {
   @override
