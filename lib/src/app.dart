@@ -34,7 +34,7 @@ class AppState extends State<App> {
           child: Icon(Icons.add),
         ),
         appBar: AppBar(
-          title: Text('Hi There!'),
+          title: Text('Images'),
         ),
       ),
     );
