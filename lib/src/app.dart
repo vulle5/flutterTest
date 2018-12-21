@@ -4,7 +4,8 @@ import 'dart:convert';
 import 'models/image_model.dart';
 import 'widgets/image_list.dart';
 // http package must be included in pubspec.yaml
-import 'package:http/http.dart';
+// We only import 'get' package from http.dart
+import 'package:http/http.dart' show get;
 
 class App extends StatefulWidget {
   @override
