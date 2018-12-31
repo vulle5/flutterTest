@@ -32,3 +32,7 @@ class Bloc extends Object with Validators{
     _password.close();
   }
 }
+
+// Single global instance of Bloc
+// This we can use to access Bloc class anywhere
+final bloc = Bloc();
