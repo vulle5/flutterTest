@@ -1,7 +1,9 @@
-# test_project
+# Flutter test projects
 
 A new Flutter test project made with Stephen Grider's Udemy course.
 Link:(https://www.udemy.com/dart-and-flutter-the-complete-developers-guide/)
+
+Link to flutter course repo:(https://github.com/StephenGrider/FlutterCasts)
 
 ## Getting Started
 
@@ -15,3 +17,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our 
 [online documentation](https://flutter.io/docs), which offers tutorials, 
 samples, guidance on mobile development, and a full API reference.
+f
