@@ -88,7 +88,20 @@ class NewsDbProvider implements Source, Cache {
   // Adding an ItemModel to the database
   Future<int> addItem(ItemModel item) {
     // insert to make SQL INSERT
-    return db.insert("Items", item.toMapForDb());
+    return db.insert(
+      "Items", 
+      item.toMapForDb(),
+      // Ignore any sql exceptions and move along
+      // We do not really care about added items that cause errors
+      // Because db acts as a cache of fetched news stories that can be
+      // fetched also from the internet
+      conflictAlgorithm: ConflictAlgorithm.ignore
+    );
+  }
+
+  // Clears items table
+  Future<int> clear() {
+    return db.delete("Items");
   }
 }
 

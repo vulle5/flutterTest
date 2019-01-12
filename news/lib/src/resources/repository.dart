@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'news_api_provider.dart';
 import 'news_db_provider.dart';
 import '../models/item_model.dart';
@@ -24,10 +25,9 @@ class Repository {
   // If not already found in database then do the network call
   Future<ItemModel> fetchItem(int id) async {
     ItemModel item;
-    Source source;
+    var source;
     // Ask Source to look for Item with given id from newsdbProvider
     // if not found in database ask newsApiProvider to do a network request
-    // THIS IS NOT GOING TO WORK
     for (source in sources) {
       item = await source.fetchItem(id);
       if (item != null) {
@@ -36,10 +36,19 @@ class Repository {
     }
 
     for (var cache in caches) {
-      cache.addItem(item);
+      if (cache != source) {
+        cache.addItem(item);
+      }
     }
 
     return item;
+  }
+
+  // Clear the cache
+  Future<int> clearCache() async {
+    for (var cache in caches) {
+      await cache.clear();
+    }
   }
 }
 
@@ -51,6 +60,7 @@ abstract class Source {
 // Defining abstract class that adds missing items to the database
 abstract class Cache {
   Future<int> addItem(ItemModel item);
+  Future<int> clear();
 }
 // With these abstract classes we can later add more data fetching sources
 // or add more places were we can save items without creating unique classes

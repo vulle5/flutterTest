@@ -18,18 +18,20 @@ class ItemModel {
   ItemModel.fromJson(Map<String, dynamic> parsedJson) 
   // Initilizer list sets values before the constructor runs
     : id = parsedJson['id'],
-      deleted = parsedJson['deleted'],
+      // if parsedJson['deleted'] has no value set it to false
+      deleted = parsedJson['deleted'] ?? false,
       type = parsedJson['type'],
       by = parsedJson['by'],
       time = parsedJson['time'],
-      text = parsedJson['text'],
-      dead = parsedJson['dead'],
+      // if null set to empty String
+      text = parsedJson['text'] ?? '',
+      dead = parsedJson['dead'] ?? false,
       parent = parsedJson['parent'],
-      kids = parsedJson['kids'],
+      kids = parsedJson['kids'] ?? [],
       url = parsedJson['url'],
       score = parsedJson['score'],
       title = parsedJson['title'],
-      descendants = parsedJson['descendants'];
+      descendants = parsedJson['descendants'] ?? 0;
 
   ItemModel.fromDb(Map<String, dynamic> dbData)
   // Initilizer list sets values before the constructor runs

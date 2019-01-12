@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'stories_bloc.dart';
 
+// This export also exports stories_bloc.dart when provider is imported
+// So no need to separately import them
+export 'stories_bloc.dart';
+
 class StoriesProvider extends InheritedWidget {
   final StoriesBloc bloc;
 
