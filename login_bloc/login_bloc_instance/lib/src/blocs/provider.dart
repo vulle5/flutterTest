@@ -17,13 +17,13 @@ class Provider extends InheritedWidget {
   // Set this to true
   bool updateShouldNotify(_) => true;
 
-  // static method so we don't accidently call this method
+  // We create static method called 'of' so we don't accidently call this method
   // from the inctance of the provider.
-  // context contains info about Widgets location in the tree
+  // Context contains info about Widgets location in the tree
   static Bloc of(BuildContext context) {
     // Look up the context tree until you find Widget of type Provider
     // and treat it 'as' of type Provider and out of that returned Widget 
-    // we want the 'bloc' property then return it
+    // we only want the 'bloc' property then return it
     return (context.inheritFromWidgetOfExactType(Provider) as Provider).bloc;
   }
 }
