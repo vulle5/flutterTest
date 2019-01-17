@@ -4,6 +4,7 @@ import 'screens/news_list.dart';
 import 'blocs/stories_provider.dart';
 import 'screens/news_detail.dart';
 import 'blocs/comments_provider.dart';
+import 'screens/news_webView.dart';
 
 class App extends StatelessWidget {
   @override
@@ -27,10 +28,18 @@ class App extends StatelessWidget {
       return MaterialPageRoute(
         builder: (context) {
           final storiesBloc = StoriesProvider.of(context);
-
+          // Builder is a create place to initialize something
+          // like fetching topIds
           storiesBloc.fetchTopIds();
 
           return NewsList();
+        }
+      );
+    } else if (settings.name.contains('<url>')) {
+      return MaterialPageRoute(
+        builder: (context) {
+          final String url = settings.name.replaceFirst('/', '').replaceAll('<url>', '');
+          return NewsWebView(url: url);
         }
       );
     } else {
