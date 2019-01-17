@@ -16,12 +16,12 @@ class ItemModel {
   final int descendants;
 
   ItemModel.fromJson(Map<String, dynamic> parsedJson) 
-  // Initilizer list sets values before the constructor runs
+  // Initializer list sets values before the constructor runs
     : id = parsedJson['id'],
       // if parsedJson['deleted'] has no value set it to false
       deleted = parsedJson['deleted'] ?? false,
       type = parsedJson['type'],
-      by = parsedJson['by'],
+      by = parsedJson['by'] ?? '',
       time = parsedJson['time'],
       // if null set to empty String
       text = parsedJson['text'] ?? '',
@@ -34,7 +34,7 @@ class ItemModel {
       descendants = parsedJson['descendants'] ?? 0;
 
   ItemModel.fromDb(Map<String, dynamic> dbData)
-  // Initilizer list sets values before the constructor runs
+  // Initializer list sets values before the constructor runs
     : id = dbData['id'],
   // Because 'deleted' is a bool it will return true if data coming from db is 1
       deleted = dbData['deleted'] == 1,

@@ -23,26 +23,31 @@ class NewsListTile extends StatelessWidget {
         }
 
         return FutureBuilder(
-          // Going to build with spesific itemId
+          // Going to build with specific itemId
           future: snapshot.data[itemId],
-          // When Future is resolved build our spesific news story
+          // When Future is resolved build our specific news story
           builder: (context, AsyncSnapshot<ItemModel> itemSnapshot) {
             if (!itemSnapshot.hasData) {
               return LoadingContainer();
             }
             // Return only the title from ItemModel
-            return buildTile(itemSnapshot.data);
+            // Passing context to buildTile
+            return buildTile(context, itemSnapshot.data);
           },
         );
       },
     );
   }
 
-  Widget buildTile(ItemModel item) {
+  Widget buildTile(BuildContext context, ItemModel item) {
     String numberOfComments = '${item.descendants}';
     return Column(
       children: <Widget>[
         ListTile(
+          onTap: () {
+            // onTap go to named route with given item.id
+            Navigator.pushNamed(context, '/${item.id}');
+          },
           title: Text(item.title),
           subtitle: Text('${item.score} points'),
           trailing: Column(

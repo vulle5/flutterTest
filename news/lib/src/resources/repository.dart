@@ -16,7 +16,6 @@ class Repository {
     newsDbProvider,
   ];
 
-  // TODO: Iterate over sources after fetchTopIds
   // gets implemented in the news_db_provider
   Future<List<int>> fetchTopIds() {
     return sources[1].fetchTopIds();
@@ -26,7 +25,7 @@ class Repository {
   Future<ItemModel> fetchItem(int id) async {
     ItemModel item;
     var source;
-    // Ask Source to look for Item with given id from newsdbProvider
+    // Ask Source to look for Item with given id from newsDbProvider
     // if not found in database ask newsApiProvider to do a network request
     for (source in sources) {
       item = await source.fetchItem(id);
@@ -49,6 +48,7 @@ class Repository {
     for (var cache in caches) {
       await cache.clear();
     }
+    return null;
   }
 }
 

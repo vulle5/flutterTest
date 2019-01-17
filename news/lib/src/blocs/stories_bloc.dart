@@ -22,11 +22,11 @@ class StoriesBloc {
 
   // Constructor
   StoriesBloc() {
-    // items stream or "Observable" that only creats one instance of transformer
+    // items stream or "Observable" that only creates one instance of transformer
     // CAN NOT USE GETTER BECAUSE ONLY ONE INSTANCE OF TRANSFORMER IS NEEDED
     // OTHERWISE WE LOSE OUR CACHE THAT CONTAINS OUR NEWS STORIES
 
-    // Fowarding transformed data to _itemsOutput using rxDart .pipe func
+    // Forwarding transformed data to _itemsOutput using rxDart .pipe func
     _itemsFetcher.stream.transform(_itemsTransformer()).pipe(_itemsOutput);
   }
 
@@ -47,7 +47,6 @@ class StoriesBloc {
       // 3rd: how many times has this transformer been invoked "don't care"
       (Map<int, Future<ItemModel>> cache, int id, _) {
         // Add new ItemModel to the cache that contains our single news story
-        print(_);
         cache[id] = _repository.fetchItem(id);
         // Return cache so it's saved for the next time this function is invoked
         // and the newly formed list of news stories is sent to the Widget that calls this
