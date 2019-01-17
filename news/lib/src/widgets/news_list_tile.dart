@@ -46,14 +46,20 @@ class NewsListTile extends StatelessWidget {
         ListTile(
           onTap: () {
             // onTap go to named route with given item.id
-            Navigator.pushNamed(context, '/${item.id}');
+            print('pressed article');
           },
           title: Text(item.title),
           subtitle: Text('${item.score} points'),
           trailing: Column(
             children: <Widget>[
               // If no comments allowed show no icon or text
-              Icon(item.descendants == null ? null : Icons.comment),
+              IconButton(
+                icon: Icon(item.descendants == null ? null : Icons.comment),
+                onPressed: () {
+                  // onTap go to named route with given item.id
+                  Navigator.pushNamed(context, '/${item.id}');
+                },
+              ),
               Text(numberOfComments.contains('null') ? '' : numberOfComments),
             ],
           ),

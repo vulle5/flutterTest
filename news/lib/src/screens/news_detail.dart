@@ -27,7 +27,7 @@ class NewsDetail extends StatelessWidget {
       stream: bloc.itemWithComments,
       builder: (context, AsyncSnapshot<Map<int, Future<ItemModel>>> snapshot) {
         if (!snapshot.hasData) {
-          Text('...Loading');
+          return Text('...Loading');
         }
 
         final itemFuture = snapshot.data[itemId];
@@ -36,7 +36,7 @@ class NewsDetail extends StatelessWidget {
           future: itemFuture,
           builder: (context, AsyncSnapshot<ItemModel> itemSnapshot) {
             if (!itemSnapshot.hasData) {
-              Text('...Loading');
+              return Text('...Loading');
             }
             // Snapshot.data has our cache Map
             return buildList(itemSnapshot.data, snapshot.data);
