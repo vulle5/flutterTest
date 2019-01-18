@@ -24,7 +24,7 @@ class Comment extends StatelessWidget {
         final item = snapshot.data;
         final children = <Widget>[
           ListTile(
-            title: cleanHTML(item), 
+            title: buildText(item), 
             subtitle: item.by == '' ? Text('Comment does not exist anymore') : Text(item.by),
             contentPadding: EdgeInsets.only(
               right: 16.0,
@@ -48,7 +48,7 @@ class Comment extends StatelessWidget {
   }
 
   // Replaces html tags with simple text
-  Widget cleanHTML(ItemModel item) {
+  Widget buildText(ItemModel item) {
     final text = item.text
       .replaceAll('&#x27;', "'")
       .replaceAll('<p>', '\n\n')

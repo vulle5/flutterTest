@@ -24,6 +24,7 @@ dependencies:
   path_provider: ^0.4.1
   rxdart: ^0.18.0
   flutter_webview_plugin: ^0.3.0+2
+  flutter_inappbrowser: ^0.5.51
 
 dev_dependencies:
   flutter_test:
