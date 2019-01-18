@@ -4,7 +4,6 @@ import 'screens/news_list.dart';
 import 'blocs/stories_provider.dart';
 import 'screens/news_detail.dart';
 import 'blocs/comments_provider.dart';
-import 'screens/news_webView.dart';
 
 class App extends StatelessWidget {
   @override
@@ -35,13 +34,6 @@ class App extends StatelessWidget {
           return NewsList();
         }
       );
-    } else if (settings.name.contains('<url>')) {
-      return MaterialPageRoute(
-        builder: (context) {
-          final String url = settings.name.replaceFirst('/', '').replaceAll('<url>', '');
-          return NewsWebView(url: url);
-        }
-      );
     } else {
       return MaterialPageRoute(
         builder: (context) {
@@ -54,6 +46,6 @@ class App extends StatelessWidget {
           return NewsDetail(itemId: itemId);
         }
       );
-    } 
+    }
   }
 }

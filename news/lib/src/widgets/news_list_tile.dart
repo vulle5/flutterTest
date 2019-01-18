@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/item_model.dart';
+import 'news_web_view.dart';
 import '../blocs/stories_provider.dart';
 import 'loading_container.dart';
 
@@ -41,11 +42,12 @@ class NewsListTile extends StatelessWidget {
 
   Widget buildTile(BuildContext context, ItemModel item) {
     String numberOfComments = '${item.descendants}';
+
     return Column(
       children: <Widget>[
         ListTile(
           onTap: () {
-            Navigator.pushNamed(context, '/${item.url}<url>');
+            NewsWebView(url: item.url).openWebView();
           },
           title: Text(item.title),
           subtitle: Text('${item.score} points'),
