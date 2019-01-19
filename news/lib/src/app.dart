@@ -14,7 +14,13 @@ class App extends StatelessWidget {
         child: MaterialApp(
           title: 'News!',
         // Navigation with onGenerateRoute
-          onGenerateRoute: routes
+          onGenerateRoute: routes,
+          theme: ThemeData(
+            brightness: Brightness.light,
+            primarySwatch: Colors.deepOrange,
+            accentColor: Colors.lightBlue,
+            accentColorBrightness: Brightness.light,
+          ),
         ),
       ),
     );  
