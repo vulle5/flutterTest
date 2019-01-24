@@ -23,7 +23,7 @@ dependencies:
   sqflite: any
   path_provider: ^0.4.1
   rxdart: ^0.18.0
-  flutter_inappbrowser: ^0.5.51
+  url_launcher: ^4.1.0+1
 
 dev_dependencies:
   flutter_test:

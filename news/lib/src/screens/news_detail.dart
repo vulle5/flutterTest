@@ -16,7 +16,7 @@ class NewsDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Detail'),
+        title: Text('Comments'),
       ),
       body: buildBody(bloc),
     );

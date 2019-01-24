@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/item_model.dart';
-import 'news_web_view.dart';
 import '../blocs/stories_provider.dart';
 import 'loading_container.dart';
 
@@ -46,8 +46,8 @@ class NewsListTile extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
-          onTap: () {
-            NewsWebView(url: item.url).openWebView();
+          onTap: () async {
+            await _launchUrl(item.url);
           },
           title: Text(item.title),
           subtitle: Text('${item.score} points'),
@@ -70,5 +70,14 @@ class NewsListTile extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  _launchUrl(String url) async {
+    // If devices can launch url
+    if (url != null && await canLaunch(url)) {
+      await launch(url, enableJavaScript: true);
+    } else {
+      throw 'Cannot launch $url';
+    }
   }
 }
