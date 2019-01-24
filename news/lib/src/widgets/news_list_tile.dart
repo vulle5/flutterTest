@@ -57,11 +57,12 @@ class NewsListTile extends StatelessWidget {
               Navigator.pushNamed(context, '/${item.id}');
             },
             child: Container(
+              margin: EdgeInsets.all(10.0),
               child: Column(
                 children: <Widget>[
                   // If no comments allowed show no icon or text
                   Icon(item.descendants == null ? null : Icons.comment),
-                  Padding(padding: EdgeInsets.all(3.0),),
+                  Padding(padding: EdgeInsets.only(top: 3.0, bottom: 3.0),),
                   Text(numberOfComments.contains('null') ? '' : numberOfComments),
                 ],
               ),
