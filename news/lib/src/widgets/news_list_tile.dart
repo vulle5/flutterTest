@@ -51,18 +51,21 @@ class NewsListTile extends StatelessWidget {
           },
           title: Text(item.title),
           subtitle: Text('${item.score} points'),
-          trailing: Column(
-            children: <Widget>[
-              // If no comments allowed show no icon or text
-              IconButton(
-                icon: Icon(item.descendants == null ? null : Icons.comment),
-                onPressed: () {
-                  // onTap go to named route with given item.id
-                  Navigator.pushNamed(context, '/${item.id}');
-                },
+          trailing: GestureDetector(
+            onTap: () {
+              // onTap go to named route with given item.id
+              Navigator.pushNamed(context, '/${item.id}');
+            },
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  // If no comments allowed show no icon or text
+                  Icon(item.descendants == null ? null : Icons.comment),
+                  Padding(padding: EdgeInsets.all(3.0),),
+                  Text(numberOfComments.contains('null') ? '' : numberOfComments),
+                ],
               ),
-              Text(numberOfComments.contains('null') ? '' : numberOfComments),
-            ],
+            ),
           ),
         ),
         Divider(
