@@ -23,7 +23,7 @@ class App extends StatelessWidget {
           ),
         ),
       ),
-    );  
+    );
   }
 
   Route routes(RouteSettings settings) {
